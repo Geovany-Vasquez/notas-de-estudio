@@ -1,0 +1,48 @@
+<?php
+// Ejemplo basico de estructura laravel
+//lo mas importante es la estructura de la programación web, lo cual es el orden logico (Ruta → Controlador → Modelo → Vista)
+
+//paso #1. RUTA (normalmente contenida en laravel en la carpeta routes/web.php)
+//es un simple, "cuando esto suceda usa o realiza este metodo"
+Route::get('/citas/eliminar/{id}', 'CitaController@destroy');
+
+//paso #2. CONTROLADOR (su ruta normal en laravel seria mas o menos asi, (app/Http/Controllers/CitaController.php))
+//primero analizar la logica, una pequeña ayuda es agregar notas
+public function destroy($id) {
+
+    // 1. Obtener la cita por id
+    // 2. Validar que la fecha no sea menor a la fecha actual
+    // 3. Si no cumple, retornar error
+    // 4. Si cumple, eliminar la cita
+    // 5. Retornar respuesta
+}
+
+//segundo llenar los espacios con la logica necesaria 
+public function destroy($id) {
+
+    $cita = Cita::find($id);
+
+    if ($cita->fecha < date('Y-m-d')) {
+        return "No se puede eliminar una cita pasada";
+    }
+
+    $cita->delete();
+
+    return "Cita eliminada";
+}
+
+//paso #3. MODELO (la ruta es la siguiente: (app/Models/Cita.php))
+//su proposito es representar la tabla es como decir literalmente "este modelo representa a la tabla..."
+class Cita extends Model {
+    protected $table = 'citas';
+}
+
+//paso #4 VISTA (ruta: (resources/views/citas/index.blade.php))
+// solamente llama a acciones no hace nada mas
+<a href="/citas/eliminar/1">Eliminar cita</a>
+  
+/* finalmente esta seria la logica completa
+-El usuario hace click
+-Se llama la ruta
+-La ruta llama al controlador
+-El controlador decide*/
