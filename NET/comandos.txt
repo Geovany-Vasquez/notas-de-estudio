@@ -1,0 +1,35 @@
+-verificar que .net esta instalado:
+
+dotnet --version
+
+-proyecto nuevo
+
+dotnet new webapi -n MiApi
+
+-ejecutar proyecto
+
+dotnet run
+
+-abrir navegador
+
+https://localhost:xxxx/swagger
+
+-restaurar paquetes
+
+dotnet restore
+
+-compilar sin ejecutar (verificar errores)
+
+dotnet build
+
+-limpiar compilación
+
+dotnet clean
+
+-ver plantillas disponibles
+
+dotnet new list
+
+-ver info del proyecto:
+
+dotnet info
